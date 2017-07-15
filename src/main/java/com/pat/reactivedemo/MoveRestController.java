@@ -30,11 +30,7 @@ public class MoveRestController {
 
     @GetMapping(value = "/{id}/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<MovieEvent> events(@PathVariable String id) {
-        final Mono<Movie> movieMono = fluxFlixService.byId(id);
-        final Movie movie = movieMono.block();
-        if(movie==null) {
-            throw new RuntimeException("Movie with id " + id + " not found");
-        }
-        return fluxFlixService.streams(movie);
+        return fluxFlixService.byId(id)
+                .flatMapMany(fluxFlixService::streams);
     }
 }
