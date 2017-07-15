@@ -1,9 +1,7 @@
 package com.pat.reactivedemo;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import org.apache.commons.text.RandomStringGenerator;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -12,8 +10,6 @@ import reactor.util.function.Tuple2;
 import java.time.Duration;
 import java.util.Date;
 import java.util.stream.Stream;
-
-import org.apache.commons.text.RandomStringGenerator;
 
 @Service
 @AllArgsConstructor
